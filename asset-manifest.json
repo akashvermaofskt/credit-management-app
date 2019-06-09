@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/credit-management-app/static/css/main.89f9edf2.chunk.css",
+    "main.js": "/credit-management-app/static/js/main.caf8ab6c.chunk.js",
+    "main.js.map": "/credit-management-app/static/js/main.caf8ab6c.chunk.js.map",
+    "runtime~main.js": "/credit-management-app/static/js/runtime~main.c0907523.js",
+    "runtime~main.js.map": "/credit-management-app/static/js/runtime~main.c0907523.js.map",
+    "static/css/2.266e55a5.chunk.css": "/credit-management-app/static/css/2.266e55a5.chunk.css",
+    "static/js/2.78747603.chunk.js": "/credit-management-app/static/js/2.78747603.chunk.js",
+    "static/js/2.78747603.chunk.js.map": "/credit-management-app/static/js/2.78747603.chunk.js.map",
+    "index.html": "/credit-management-app/index.html",
+    "precache-manifest.a9006b8bca4a9045c02703392da5ff57.js": "/credit-management-app/precache-manifest.a9006b8bca4a9045c02703392da5ff57.js",
+    "service-worker.js": "/credit-management-app/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/credit-management-app/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.89f9edf2.chunk.css.map": "/credit-management-app/static/css/main.89f9edf2.chunk.css.map",
+    "static/media/logo.png": "/credit-management-app/static/media/logo.ff61f89b.png"
+  }
+}
