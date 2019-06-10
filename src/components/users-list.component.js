@@ -21,7 +21,6 @@ class UsersList extends Component{
     }
 
     componentWillMount(){
-        console.log("Mounted");
         axios.get('https://credit-management-app-backend.herokuapp.com/users/')
             .then(response => {
                 this.setState({users:response.data});

@@ -22,13 +22,9 @@ class Popup extends Component {
     onSubmit(e){
         e.preventDefault();
         if(this.state.toid===""){
-            alert("Choose user")
+            alert("Choose user");
         }
         else{
-            console.log(`Form submitted:`);
-            console.log(`From id: ${this.state.fromid}`);
-            console.log(`Toid: ${this.state.toid}`);
-            console.log(`Credit transferd: ${this.state.credit}`);
 
             axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.fromid)
             .then(response =>{
@@ -74,38 +70,33 @@ class Popup extends Component {
                         email:response.data.email,
                         credit:response.data.credit-this.state.credit
                     }
-                    console.log(obj);
                     axios.post('https://credit-management-app-backend.herokuapp.com/users/update/'+this.state.fromid,obj)
-                        .then(res => console.log(res.data));
+                        .then(res =>{
+                                axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.toid)
+                                .then(response =>{
+                                    const obj ={
+                                        name:response.data.name,
+                                        email:response.data.email,
+                                        credit:(Number(response.data.credit)+Number(this.state.credit))
+                                    }
+                                    axios.post('https://credit-management-app-backend.herokuapp.com/users/update/'+this.state.toid,obj)
+                                        .then(res =>{ 
+                                            this.props.history.push('/');
+                                        });
+                                        
+                                })
+                                .catch(function(error){
+                                    console.log(function(error){
+                                    console.log(error);
+                                })
+                            });
+                        });
                 })
                 .catch(function(error){
                     console.log(function(error){
                         console.log(error);
                     })
                 });
-
-            axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.toid)
-            .then(response =>{
-                const obj ={
-                    name:response.data.name,
-                    email:response.data.email,
-                    credit:(Number(response.data.credit)+Number(this.state.credit))
-                }
-                console.log(obj);
-                axios.post('https://credit-management-app-backend.herokuapp.com/users/update/'+this.state.toid,obj)
-                    .then(res =>{ 
-                        console.log(res.data)
-                        this.props.history.push('/');
-                    });
-                    
-            })
-            .catch(function(error){
-                console.log(function(error){
-                    console.log(error);
-                })
-            });
-
-            
 
         }
 
@@ -134,7 +125,7 @@ class Popup extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Enter credit to transfer: </label>
-                        <input type="number" defaultValue="0" className="form-control" min="0" max={this.props.maxCredit} onChange={this.handleCreditChange}/>
+                        <input type="number" defaultValue="0" className="form-control" min="1" max={this.props.maxCredit} onChange={this.handleCreditChange}/>
                     </div>
                     <div className="form-group">
                         <label>Select user from list:</label>
