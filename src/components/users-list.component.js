@@ -25,6 +25,7 @@ class UsersList extends Component{
         axios.get('http://localhost:4000/users/')
             .then(response => {
                 this.setState({users:response.data});
+                console.log(response.data);
             })
             .catch(function(error){
                 console.log(error);

@@ -7,10 +7,14 @@ const mongoose = require('mongoose');
 
 let User = require('./user.model');
 
+
 app.use(cors());
 app.use(bodyParser.json());
+const connectionString = "mongodb+srv://akashvermaofskt:akv%401998@mycluster-xx5kl.mongodb.net/users"
 
-mongoose.connect('mongodb://127.0.0.1:27017/users',{ useNewUrlParser : true });
+mongoose.connect(connectionString,{ useNewUrlParser: true });
+
+
 const connection=mongoose.connection;
 connection.once('open',function(){
     console.log("MongoDB databse connection established succesfully!")
