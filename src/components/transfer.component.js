@@ -11,7 +11,7 @@ class Transfers extends Component{
 
     componentWillMount(){
         console.log("Mounted");
-        axios.get('http://localhost:4000/transfers/')
+        axios.get('https://credit-management-app-backend.herokuapp.com/transfers/')
             .then(response => {
                 this.setState({transfers:response.data});
              })

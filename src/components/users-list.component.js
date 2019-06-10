@@ -22,10 +22,9 @@ class UsersList extends Component{
 
     componentWillMount(){
         console.log("Mounted");
-        axios.get('http://localhost:4000/users/')
+        axios.get('https://credit-management-app-backend.herokuapp.com/users/')
             .then(response => {
                 this.setState({users:response.data});
-                console.log(response.data);
             })
             .catch(function(error){
                 console.log(error);

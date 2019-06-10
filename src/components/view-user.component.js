@@ -30,12 +30,12 @@ class Popup extends Component {
             console.log(`Toid: ${this.state.toid}`);
             console.log(`Credit transferd: ${this.state.credit}`);
 
-            axios.get('http://localhost:4000/users/'+this.state.fromid)
+            axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.fromid)
             .then(response =>{
                 this.setState({
                     fromName:response.data.name
                 });
-                axios.get('http://localhost:4000/users/'+this.state.toid)
+                axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.toid)
                 .then(response =>{
                     this.setState({
                         toName:response.data.name
@@ -48,7 +48,7 @@ class Popup extends Component {
                         credit: this.state.credit
                     }
         
-                    axios.post('http://localhost:4000/transfers/add',transfer)
+                    axios.post('https://credit-management-app-backend.herokuapp.com/transfers/add',transfer)
                         .then(res => console.log(res.data));
                 })
                 .catch(function(error){
@@ -67,7 +67,7 @@ class Popup extends Component {
 
             
 
-            axios.get('http://localhost:4000/users/'+this.state.fromid)
+            axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.fromid)
                 .then(response =>{
                     const obj ={
                         name:response.data.name,
@@ -75,7 +75,7 @@ class Popup extends Component {
                         credit:response.data.credit-this.state.credit
                     }
                     console.log(obj);
-                    axios.post('http://localhost:4000/users/update/'+this.state.fromid,obj)
+                    axios.post('https://credit-management-app-backend.herokuapp.com/users/update/'+this.state.fromid,obj)
                         .then(res => console.log(res.data));
                 })
                 .catch(function(error){
@@ -84,7 +84,7 @@ class Popup extends Component {
                     })
                 });
 
-            axios.get('http://localhost:4000/users/'+this.state.toid)
+            axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.state.toid)
             .then(response =>{
                 const obj ={
                     name:response.data.name,
@@ -92,7 +92,7 @@ class Popup extends Component {
                     credit:(Number(response.data.credit)+Number(this.state.credit))
                 }
                 console.log(obj);
-                axios.post('http://localhost:4000/users/update/'+this.state.toid,obj)
+                axios.post('https://credit-management-app-backend.herokuapp.com/users/update/'+this.state.toid,obj)
                     .then(res =>{ 
                         console.log(res.data)
                         this.props.history.push('/');
@@ -173,7 +173,7 @@ class Popup extends Component {
       }
 
     componentDidMount(){
-        axios.get('http://localhost:4000/users/')
+        axios.get('https://credit-management-app-backend.herokuapp.com/users/')
         .then(response => {
             this.setState({users:response.data});
             
@@ -182,7 +182,7 @@ class Popup extends Component {
             console.log(error);
         });
 
-        axios.get('http://localhost:4000/users/'+this.props.match.params.id)
+        axios.get('https://credit-management-app-backend.herokuapp.com/users/'+this.props.match.params.id)
             .then(response =>{
                 this.setState({
                     name:response.data.name,
