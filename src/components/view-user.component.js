@@ -149,6 +149,7 @@ class Popup extends Component {
     constructor(props){
         super(props);
         this.state={
+            loaded:false,
             id:"",
             name:"",
             email:"",
@@ -180,7 +181,8 @@ class Popup extends Component {
                     email:response.data.email,
                     credit:response.data.credit,
                     id: response.data._id,
-                    users: this.state.users
+                    users: this.state.users,
+                    loaded: true
                 });
             })
             .catch(function(error){
@@ -219,7 +221,7 @@ class Popup extends Component {
                             <td>{ this.state.email }</td>
                             <td>{ this.state.credit }</td>
                             <td>
-                                <button onClick={this.togglePopup.bind(this)}>Transfer</button>
+                                <button id="tbutton" disabled={!this.state.loaded} onClick={this.togglePopup.bind(this)}>Transfer</button>
                             </td>
                         </tr>
                     </tbody>
