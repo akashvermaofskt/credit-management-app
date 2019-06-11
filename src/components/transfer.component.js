@@ -23,6 +23,13 @@ class Transfers extends Component{
 
 
     transferList() {
+        if(this.state.transfers.length==0){
+            return(<tr>
+                    <td>Loading all transfer records...</td>
+                    <td></td>
+                    <td></td>
+                </tr>);
+        }
         return  this.state.transfers.map(function(curr,i){
             return (
                 <tr key={i}>
@@ -43,7 +50,7 @@ class Transfers extends Component{
                         <tr>
                             <th>From</th>
                             <th>To</th>
-                            <th>Credit</th>
+                            <th>Credits</th>
                         </tr>
                     </thead>
                     <tbody>

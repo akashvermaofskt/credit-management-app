@@ -132,7 +132,7 @@ class Popup extends Component {
                 <h1 className='text-center'>{this.props.text}</h1>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Enter credit to transfer: </label>
+                        <label>Enter credits to transfer: </label>
                         <input type="number" defaultValue="0" className="form-control" min="1" max={this.props.maxCredit} onChange={this.handleCreditChange}/>
                     </div>
                     <div className="form-group">
@@ -144,7 +144,7 @@ class Popup extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <input disabled={this.state.loading} type="submit" value={!this.state.loading ? "Transfer Credit" : "Transferring..."} className="btn btn-primary" />
+                        <input disabled={this.state.loading} type="submit" value={!this.state.loading ? "Transfer Credits" : "Transferring..."} className="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -219,8 +219,8 @@ class Popup extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Credit</th>
-                            <th>Transfer Credit</th>
+                            <th>Credits</th>
+                            <th>Transfer Credits</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -236,7 +236,7 @@ class Popup extends Component {
                 </table>
                 {this.state.showPopup ? 
                     <Popup
-                        text='Transfer Credit'
+                        text='Transfer Credits'
                         userList = {this.userList()}
                         transfer={this.togglePopup.bind(this)}
                         history={this.props.history}
