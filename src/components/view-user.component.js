@@ -11,7 +11,8 @@ class Popup extends Component {
             toid:"",
             fromName:"",
             toName:"",
-            credit:0
+            credit:0,
+            loading:false
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -21,8 +22,15 @@ class Popup extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        this.setState({
+            loading:true
+        });
+
         if(this.state.toid===""){
             alert("Choose user");
+            this.setState({
+                loading:false
+            });
         }
         else{
 
@@ -136,7 +144,7 @@ class Popup extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Transfer Credit" className="btn btn-primary" />
+                        <input disabled={this.state.loading} type="submit" value={!this.state.loading ? "Transfer Credit" : "Transferring..."} className="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -151,9 +159,9 @@ class Popup extends Component {
         this.state={
             loaded:false,
             id:"",
-            name:"",
+            name:"Loading User info...",
             email:"",
-            credit:0,
+            credit:"",
             showPopup: false,
             users:[]
         }
@@ -221,7 +229,7 @@ class Popup extends Component {
                             <td>{ this.state.email }</td>
                             <td>{ this.state.credit }</td>
                             <td>
-                                <button id="tbutton" disabled={!this.state.loaded} onClick={this.togglePopup.bind(this)}>Transfer</button>
+                                <button className="btn btn-primary" id="tbutton" disabled={!this.state.loaded} onClick={this.togglePopup.bind(this)}>Transfer</button>
                             </td>
                         </tr>
                     </tbody>

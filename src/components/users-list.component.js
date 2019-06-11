@@ -34,6 +34,15 @@ class UsersList extends Component{
 
 
     userList() {
+        if(this.state.users.length==0)
+            return (
+                <tr>
+                    <td>Loading Users...</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>
+            );
+
         return this.state.users.map(function(currentUser, i){
             return <User user={currentUser} key={i} />;
         })
